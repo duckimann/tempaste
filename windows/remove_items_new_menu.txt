@@ -1,0 +1,12 @@
+Open RUN
+> regedit
+
+> HKEY_CLASSES_ROOT
+> Ctrl + F: ShellNew (only the key)
+
+for example:
+.contact
+	|----ShellNew
+	|----Shellex
+
+> delete that "ShellNew" key in that type of file

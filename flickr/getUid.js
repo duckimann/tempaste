@@ -1,0 +1,1 @@
+(() => window.prompt("User ID: ", new URL(document.querySelector("a[href*='mail/write']").href).searchParams.get("to")))();

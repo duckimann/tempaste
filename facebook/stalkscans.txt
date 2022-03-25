@@ -1,0 +1,50 @@
+// Change "uid" to user id of people you want to ... (idk which word I should use here)
+
+// Profile Section:
+www.facebook.com/search/uid/photos-by/                                               // Pictures
+www.facebook.com/search/uid/videos-by/                                               // Videos
+www.facebook.com/search/uid/stories-by/                                              // Posts
+www.facebook.com/search/uid/groups/                                                  // Groups
+www.facebook.com/search/uid/events-joined/                                           // Future Events
+www.facebook.com/search/uid/events-joined/in-past/date/events/intersect/             // Past Events
+www.facebook.com/search/uid/apps-used/game/apps/intersect                            // Games
+www.facebook.com/search/uid/apps-used/                                               // Apps
+
+// Tags Section:
+www.facebook.com/search/uid/photos-of/intersect/                                     // Pictures
+www.facebook.com/search/uid/videos-of/intersect/                                     // Videos
+www.facebook.com/search/uid/stories-tagged/intersect/                                // Posts
+
+// Comment Section:
+www.facebook.com/search/uid/photos-commented/intersect                               // Pictures
+
+// Liked Section: 
+www.facebook.com/search/uid/photos-liked/intersect                                   // Pictures Liked
+www.facebook.com/search/uid/videos-liked/intersect                                   // Videos Liked
+www.facebook.com/search/uid/stories-liked/intersect                                  // Posts Liked
+
+// Places Section:
+www.facebook.com/search/uid/places-visited/                                          // All Places
+www.facebook.com/search/uid/places-visited/110290705711626/places/intersect/         // Bars Visited
+www.facebook.com/search/uid/places-visited/273819889375819/places/intersect/         // Restaurant Visited
+www.facebook.com/search/uid/places-visited/200600219953504/places/intersect/         // Stores Visited
+www.facebook.com/search/uid/places-visited/935165616516865/places/intersect/         // Outdoors Visited
+www.facebook.com/search/uid/places-visited/164243073639257/places/intersect/         // Hotel Visited
+www.facebook.com/search/uid/places-visited/192511100766680/places/intersect/         // Theaters Visited
+
+// People Section:
+www.facebook.com/search/uid/relatives/intersect/                                     // Family
+www.facebook.com/search/uid/friends/intersect/                                       // Friends
+www.facebook.com/search/uid/friends/friends/intersect/                               // Friends Of Friends
+www.facebook.com/search/uid/employees/intersect/                                     // Co-Workers
+www.facebook.com/search/uid/schools-attended/ever-past/intersect/students/intersect/ // Classmates
+www.facebook.com/search/uid/current-cities/residents-near/present/intersect          // Locals
+
+// Interests Section:
+www.facebook.com/search/uid/pages-liked/intersect                                    // Pages
+www.facebook.com/search/uid/pages-liked/161431733929266/pages/intersect/             // Political parties
+www.facebook.com/search/uid/pages-liked/religion/pages/intersect/                    // Religion
+www.facebook.com/search/uid/pages-liked/musician/pages/intersect/                    // Music
+www.facebook.com/search/uid/pages-liked/movie/pages/intersect/                       // Movies
+www.facebook.com/search/uid/pages-liked/book/pages/intersect/                        // Books
+www.facebook.com/search/uid/places-liked/                                            // Places

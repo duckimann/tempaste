@@ -1,0 +1,1 @@
+javascript: !(() => {window.open(`http://i3.ytimg.com/vi/${new URL(document.URL).searchParams.get("v")}/maxresdefault.jpg`, "_blank");})();

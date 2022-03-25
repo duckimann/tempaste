@@ -1,0 +1,9 @@
+1. Powershell (as admin)
+	1.1 -> sfc /scannow
+	1.2 -> Get-AppXPackage -AllUsers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
+		-> ignores any red texts -> restart the machine
+
+2. New user account
+-> net user NewUsername NewPassword /add
+
+3. Refresh your computer

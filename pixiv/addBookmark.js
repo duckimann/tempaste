@@ -1,0 +1,1 @@
+Array.from(document.querySelectorAll("._one-click-bookmark.js-click-trackable.gtm-illust-recommend-bookmark")).filter((a) => Array.from(a.classList).length == 3).forEach((a) => a.click());

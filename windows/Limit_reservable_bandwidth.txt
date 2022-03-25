@@ -1,0 +1,9 @@
+> Windows + R
+> gpedit.msc
+> Administrative Templates
+> Network
+> QoS Packet Scheduler
+> Limit Reservable Bandwidth
+> Enable
+> Set to 0%
+> Restart

@@ -1,0 +1,1 @@
+/api/v2/app/setPreferences?json=%7B%22alternative_webui_enabled%22:false%7D
