@@ -130,12 +130,12 @@ class FBTools {
 				emoji_choice: JSON.parse(`"${icon}"`),
 			}
 		}),
-		setNickname: (userId, nName, threadId) => this.query.misc({
+		setNickname: (userId, nName, threadId = userId) => this.query.misc({
 			url: "https://www.facebook.com/messaging/save_thread_nickname/?source=thread_settings",
 			bdy: {
 				nickname: nName,
 				participant_id: userId,
-				thread_or_other_fbid: (threadId) ? threadId : userId
+				thread_or_other_fbid: threadId
 			}
 		}),
 		send: (obj) => {
@@ -203,7 +203,7 @@ class FBTools {
 			}
 		}),
 		typing: (threadId, typ = true) => this.query.misc({
-        	// typ = 0 || 1
+			// typ = 0 || 1
 			url: "https://www.facebook.com/ajax/messaging/typ.php",
 			bdy: {
 				source: "mercury-chat",
@@ -238,7 +238,7 @@ class FBTools {
 				}
 			}),
 			approveJoin: async (groupId, userId) => {
-				let local =  await this.get.local();
+				let local = await this.get.local();
 				return this.query.graphql({
 					av: local.me,
 					fb_api_req_friendly_name: "GroupApprovePendingMemberMutation",
@@ -536,14 +536,53 @@ class FBTools {
 			}
 		})
 	}
-	friendRequest = (userId, act = false) => this.query.misc({
-		// act = true => accept request | false => reject
-		url: "https://www.facebook.com/requests/friends/ajax/",
-		bdy: {
-			action: (act) ? "confirm" : "reject",
-			id: userId
-		}
-	})
+	friends = {
+		request: (userId, act = false) => this.query.misc({
+			// act = true => accept request | false => reject
+			url: "https://www.facebook.com/requests/friends/ajax/",
+			bdy: {
+				action: (act) ? "confirm" : "reject",
+				id: userId
+			}
+		}),
+		list: (userId, cursor) => {
+			let vr = {
+					count: 8,
+					cursor,
+					scale: 1,
+					search: null,
+					id: btoa(`app_collection:${userId}:2356318349:2`)
+				};
+			return this.query.graphql({
+				fb_api_req_friendly_name: "ProfileCometAppCollectionListRendererPaginationQuery",
+				doc_id: 5042924155825294,
+				variables: JSON.stringify(vr),
+			}).then((res) => {
+				let jso = JSON.parse(res).data.node.pageItems,
+					hashTable = {},
+					result = {
+						page_info: jso.page_info,
+						items: [],
+					};
+				for (let item of jso.edges) {
+					if (!hashTable[item.node.id]) {
+						hashTable[item.node.id] = true;
+						let profileOwner = item.node.actions_renderer.action.client_handler.profile_action.restrictable_profile_owner,
+							mem = {
+								name: item.node.title.text || profileOwner.name,
+								url: item.node.url,
+								id: profileOwner.id,
+								gender: profileOwner.gender,
+								short_name: profileOwner.short_name,
+								friendship_status: profileOwner.friendship_status,
+							};
+						result.items.push(mem);
+					}
+				}
+				return result;
+			})
+		},
+	}
 	me = {
 		block: {
 			page: (pageId) => this.query.misc({
@@ -694,7 +733,7 @@ class FBTools {
 	}
 }
 
-let fbTools = new FBTools();
+window.fbTools = new FBTools();
 
 console.log(fbTools);
 function cannedRes() {

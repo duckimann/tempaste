@@ -8,6 +8,7 @@
 manage-bde -status
 manage-bde -off [DriveLetter]:
 manage-bde -on [DriveLetter]:
+manage-bde -on -usedspaceonly [DriveLetter]:
 manage-bde [DriveLetter]: -protectors -get
 
 # Powershell command
