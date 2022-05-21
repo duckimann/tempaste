@@ -1,11 +1,11 @@
 ((chapters) => {
 	new Promise((res) => {
 		let items = chapters.split("\n").map((chapter, index) => {
-			let info = chapter.split(" - "),
-				time = info[0],
-				title = info[1];
+			let info = chapter.match(/^(\d+\:\d+(?:\:\d+)?)\s(.*)/),
+				time = info[1],
+				title = info[2];
 			++index;
-			return `CHAPTER${index}=00:${time}.000\nCHAPTER${index}NAME=${title}`;
+			return `CHAPTER${index}=${(time.match(/:/g).length === 1) ? "00:" : ""}${time}.000\nCHAPTER${index}NAME=${title}`;
 		});
 		res(items.join("\n"));
 	}).then((a) => {

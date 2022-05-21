@@ -8,6 +8,8 @@ cd ~/.ssh
 
 # Step 1: Gen the key
 ssh-keygen -b 4096;
+ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/{{name}} -C {{your_email_addr}} # this is the new one
+
 # then enter the file name (will be saved under ~/.ssh)
 # if you're on linux
 ssh-copy-id username@ip;

@@ -73,6 +73,12 @@ git rebase -i --root
 git merge [merge_X_to_current_branch] # can't differentiate commits
 git merge [merge_X_to_current_branch] --no-ff
 
+
+# Reflog (show all git activities)
+git reflog
+# purge reflog
+git reflog expire --expire=90.days.ago --expire-unreachable=now --all
+
 # Reset
 git reset
 git reset --hard

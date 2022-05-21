@@ -143,13 +143,19 @@ class FBTools {
 					audio: 123,
 					emoji: "😂_1" || "\uD83D\uDE02_3", // syntax: emoji(?_size) || size = [1,2,3]
 					image: 123, // or image: [1,2,3]
-					msg: "your msg",
+					msg: "your msg {m}",
 					sticker: 123,
 					thread: 123,
 					user: 123,
 					video: 123,
+					mention: {
+						id: 123, // could be user id or thread id (mention everyone)
+						t: "mention text" // replace "{m}" in obj.msg
+					}
 				}
 			*/
+			let mId = Math.floor(Math.random() * 999999999);
+
 			if (obj.hasOwnProperty("emoji") && /_/g.test(obj.emoji)) {
 				let splitted = obj.emoji.split("_"),
 					hashTable = {
@@ -160,7 +166,11 @@ class FBTools {
 				obj.emoji = splitted[0];
 				obj.es = hashTable[splitted[1]];
 			}
-			let mId = Math.floor(Math.random() * 999999999);
+			if (obj.mention && obj.mention.id && obj.mention.t) {
+				obj.mention.id = (obj.mention.id !== 0) ? obj.mention.id : (obj.thread || obj.user);
+				obj.msg = obj.msg.replace(/\{m\}/g, obj.mention.t);
+			}
+
 			return this.query.misc({
 				url: "https://www.facebook.com/messaging/send/",
 				bdy: {
@@ -192,6 +202,12 @@ class FBTools {
 					...(obj.thread) ? ({thread_fbid: obj.thread}) : "",
 					...(obj.user) ? ({other_user_fbid: obj.user}) : "",
 					...(obj.video) ? ({"video_ids[0]": obj.video}) : "",
+					...(obj.mention) ? ({
+						"profile_xmd[0][id]": obj.mention.id,
+						"profile_xmd[0][offset]": obj.msg.indexOf(obj.mention.t),
+						"profile_xmd[0][length]": obj.mention.t.length,
+						"profile_xmd[0][type]": "p",
+					}) : "",
 				}
 			});
 		},
