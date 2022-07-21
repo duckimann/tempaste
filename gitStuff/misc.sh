@@ -21,6 +21,9 @@ git bisect --help
 git log
 git log --oneline --graph --decorate
 
+# cherry
+git cherry commit_id
+
 # status
 git status
 
@@ -38,6 +41,9 @@ git commit -sm "commit msg" # sign commit
 # push
 git push -u [local] [remote] # update
 git push -f [local] [remote] # force push
+
+# subtree
+git subtree push --prefix [folder] [repo/origin] [branch_name] # prefix -> bring the folder to root
 
 # pull (update local version)
 git pull
@@ -89,6 +95,10 @@ git reset HEAD -- [file]
 # Revert
 git revert
 
+# Restore (restore changing to last commit)
+git restore .
+git restore path_to_file
+
 # Stash
 git stash
 git stash pop # get back the code before stash
@@ -98,6 +108,19 @@ git stash list # list stashes
 git stash pop [index]
 git stash drop -q [name]
 
+git stash list [<log-options>]
+git stash show [-u|--include-untracked|--only-untracked] [<diff-options>] [<stash>]
+git stash drop [-q|--quiet] [<stash>]
+git stash ( pop | apply ) [--index] [-q|--quiet] [<stash>]
+git stash branch <branchname> [<stash>]
+git stash [push [-p|--patch] [-S|--staged] [-k|--[no-]keep-index] [-q|--quiet]
+	     [-u|--include-untracked] [-a|--all] [-m|--message <message>]
+	     [--pathspec-from-file=<file> [--pathspec-file-nul]]
+	     [--] [<pathspec>…​]]
+git stash clear
+git stash create [<message>]
+git stash store [-m|--message <message>] [-q|--quiet] <commit>
+
 # Show (show commit details)
 git show [commit_id]
 # Show file details in commit
@@ -106,6 +129,12 @@ git show [commit_id]:[path_to_file] # git show HEAD:dashboard.html
 # List files
 git ls-tree --full-tree -r [commit_id_or_HEAD]
 
+git ls-files -ci --exclude-standard
+
+
+# List configs
+git config --global alias
+git config --list | grep alias
 
 # git alias cho phép bạn đặt tên thay thế cho các câu lệnh thường dùng. Thay vì phải gõ dài dòng như git commit --amend -s, bạn có thể dùng git config --global alias.cmsa "commit --amend -s", và bùm, từ nay chỉ cần git cmsa là xong.
 # Dưới đây là một số alias mà Ehkoo thường dùng:
