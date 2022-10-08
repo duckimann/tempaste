@@ -20,6 +20,7 @@ git bisect --help
 # log
 git log
 git log --oneline --graph --decorate
+git log --full-history -- [file_path] # find which commit touch the file
 
 # cherry-pick (giống kiểu rebase, đem commit ở branch A qua B)
 git cherry-pick commit_id
